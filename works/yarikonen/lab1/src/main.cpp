@@ -110,6 +110,16 @@ bool write_output(const std::string &path, const Output &out) {
 } // namespace
 
 int main(int argc, char **argv) {
+    if (argc == 2 && std::string_view(argv[1]) == "--help") {
+        std::cout
+            << "Usage: submission --input PATH --output PATH [--mode MODE] "
+               "[--block-size N] [--repeat N]\n"
+               "Modes: coalesced (default), noncoalesced. Block size: 1..1024 (default 256).\n"
+               "--repeat N: one warmup, N timed cycles, and median timings on stdout.\n"
+               "Input: N alpha followed by N pairs x y. Output: N rows of add SAXPY ReLU.\n"
+               "N=0 writes an empty output file.\n";
+        return 0;
+    }
     try {
         Options options;
         if (!parse_options(argc, argv, options)) {

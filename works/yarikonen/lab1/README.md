@@ -51,6 +51,7 @@ cmake --build build --target submission
 ## Запуск
 
 ```bash
+./build/submission --help
 ./build/submission --input data/sample.txt --output build/coalesced.txt
 ./build/submission --input data/sample.txt --output build/noncoalesced.txt --mode noncoalesced
 ```

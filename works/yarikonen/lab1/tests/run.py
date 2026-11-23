@@ -20,6 +20,7 @@ def run(exe, source, output, *options):
 def check(exe, work):
     output = work / "output.txt"
     source = work / "input.txt"
+    subprocess.run([str(exe), "--help"], check=True, capture_output=True)
 
     expected = (DATA / "sample.expected.txt").read_text()
     for args in ((), ("--mode", "coalesced"), ("--mode", "noncoalesced")):
