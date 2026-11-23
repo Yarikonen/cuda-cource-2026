@@ -39,7 +39,7 @@ bool parse_options(int argc, char **argv, Options &options) {
             options.input = value;
         } else if (key == "--output") {
             options.output = value;
-        } else if (key == "--mode") {
+        } else if (key == "--mode" && (value == "coalesced" || value == "noncoalesced")) {
             options.noncoalesced = value == "noncoalesced";
         } else if (key == "--block-size") {
             if (!read_positive(value, options.block) || options.block > 1024) {

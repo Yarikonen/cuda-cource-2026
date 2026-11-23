@@ -60,6 +60,7 @@ def check(exe, work):
         source.write_text(bad_input)
         assert run(exe, source, output).returncode == 2, bad_input
     assert run(exe, DATA / "sample.txt", output, "--block-size", "0").returncode == 2
+    assert run(exe, DATA / "sample.txt", output, "--mode", "unknown").returncode == 2
     assert run(exe, DATA / "sample.txt", output / "missing.txt").returncode == 1
     print("Maximum absolute errors (add, SAXPY, ReLU):", *max_error)
 
